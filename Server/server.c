@@ -10,7 +10,7 @@
 
 #define PORT 5555
 
-void main()
+ void main()
 {
  int sockfd;
  struct sockaddr_in serverAddr;
@@ -40,20 +40,18 @@ void main()
  
  newSocket=accept(sockfd,(struct sockaddr*)&newAddr,&addr_size);
 
-
- 
-
-printf("Enter Data send to client  : ");
-scanf("%s" , buf);
- /*strcpy(buf,"HELLO FROM Server");*/ 
-send_fun(newSocket,buf,strlen(buf),0);
-// send(newSocket,buf,strlen(buf),0);
+ printf("Enter Data send to client  : ");
+ scanf("%s" , buf);
+  
+ send_fun(newSocket,buf,strlen(buf),0);
+ // send(newSocket,buf,strlen(buf),0);
 
  recieve_fun(newSocket,buf,1024,0);
  //recv(newSocket,buf,1024,0);
  //printf("Data Received: %s\n",buf);
  
  printf("Closing Connection...\n"); 
- }
+ 
+}
 
 
