@@ -5,7 +5,8 @@
 #include<sys/types.h>
 #include<netinet/in.h>
 #include<arpa/inet.h>
-
+#include "../headerfiles/client_headerfile.h"
+//#include "client_headerfile.h"
 
 #define PORT 5555
 
@@ -25,16 +26,18 @@ void main(){
  serverAddr.sin_port=htons(PORT);
  serverAddr.sin_addr.s_addr=inet_addr("127.0.0.1");
  
+connect_fun(clientSocket,serverAddr,serverAddr);
+// connect(clientSocket,(struct sockaddr*)&serverAddr,sizeof(serverAddr));
+ //printf("Connected to Server Successfully...\n");
 
- connect(clientSocket,(struct sockaddr*)&serverAddr,sizeof(serverAddr));
- printf("Connected to Server Successfully...\n");
-
- recv(clientSocket,buf,1024,0);
-printf("Data recieved from server : %s\n",buf);
+recieve_fun(clientSocket,buf,1024,0);
+//recv(clientSocket,buf,1024,0);
+//printf("Data recieved from server : %s\n",buf);
 
 printf("Enter Data for server : ");
 scanf("%s" , buf);
-send(clientSocket,buf,strlen(buf),0);
+send_fun(clientSocket,buf,strlen(buf),0);
+//send(clientSocket,buf,strlen(buf),0);
 /*strcpy(buf,"HELLO back from client");*/ 
 
 

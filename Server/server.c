@@ -5,7 +5,7 @@
 #include<sys/types.h>
 #include<netinet/in.h>
 #include<arpa/inet.h>
-
+#include "../headerfiles/server_headerfile.h"
 
 
 #define PORT 5555
@@ -46,10 +46,12 @@ void main()
 printf("Enter Data send to client  : ");
 scanf("%s" , buf);
  /*strcpy(buf,"HELLO FROM Server");*/ 
- send(newSocket,buf,strlen(buf),0);
+send_fun(newSocket,buf,strlen(buf),0);
+// send(newSocket,buf,strlen(buf),0);
 
- recv(newSocket,buf,1024,0);
- printf("Data Received: %s\n",buf);
+ recieve_fun(newSocket,buf,1024,0);
+ //recv(newSocket,buf,1024,0);
+ //printf("Data Received: %s\n",buf);
  
  printf("Closing Connection...\n"); 
  }
